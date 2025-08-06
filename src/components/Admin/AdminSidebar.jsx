@@ -23,7 +23,7 @@ const AdminSidebar = () => {
     <div className="p-6">
       <div className="mb-6">
         <Link to="/admin" className="text-2xl font-medium">
-          Royal Gems
+          Made in China
         </Link>
       </div>
       <h2 className="text-xl font-medium mb-6 text-center">Admin Dashboard</h2>
@@ -76,7 +76,7 @@ const AdminSidebar = () => {
       </nav>
       <div className="mt-6">
         <button
-          // onClick={handleLogout}
+          onClick={handleLogout}
           className="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded flex items-center justify-center space-x-2"
         >
           <FaSignOutAlt />
