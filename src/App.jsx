@@ -58,11 +58,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminLayout from "./components/Admin/AdminLayout";
 import { Toaster } from "sonner";
 import AdminHomePage from "./pages/AdminHomePage";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+
 import UserManagement from "./components/Admin/UserManagement";
 import ProductManagement from "./components/Admin/ProductManagement";
 import EditProductPage from "./components/Admin/EditProductPage";
 import OrderManagement from "./components/Admin/OrderManagement";
-import NotFound from "./pages/NotFound";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -72,21 +74,23 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Toaster position="top-right" />
+
         <Routes>
-          {/* Direct access to admin - no authentication required */}
+          {/* Public Route: Login - no sidebar */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Admin routes wrapped in AdminLayout */}
           <Route path="/" element={<AdminLayout />}>
             <Route index element={<AdminHomePage />} />
             <Route path="admin" element={<AdminHomePage />} />
             <Route path="admin/users" element={<UserManagement />} />
             <Route path="admin/products" element={<ProductManagement />} />
-            <Route
-              path="admin/products/:id/edit"
-              element={<EditProductPage />}
-            />
+            <Route path="admin/products/:id/edit" element={<EditProductPage />} />
             <Route path="admin/orders" element={<OrderManagement />} />
-            {/* 404 route */}
-            <Route path="*" element={<NotFound />} />
           </Route>
+
+          {/* Catch-all for 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </Provider>

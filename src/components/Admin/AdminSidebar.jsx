@@ -17,7 +17,7 @@ const AdminSidebar = () => {
   const handleLogout = () => {
     dispatch(logout());
     // dispatch(clearCart());
-    navigate("/");
+    navigate("/login");
   };
   return (
     <div className="p-6">
