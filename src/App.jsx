@@ -62,6 +62,7 @@ import UserManagement from "./components/Admin/UserManagement";
 import ProductManagement from "./components/Admin/ProductManagement";
 import EditProductPage from "./components/Admin/EditProductPage";
 import OrderManagement from "./components/Admin/OrderManagement";
+import NotFound from "./pages/NotFound";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -83,6 +84,8 @@ const App = () => {
               element={<EditProductPage />}
             />
             <Route path="admin/orders" element={<OrderManagement />} />
+            {/* 404 route */}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

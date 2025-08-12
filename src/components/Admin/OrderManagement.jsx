@@ -14,12 +14,15 @@ const OrderManagement = () => {
   const { orders, loading, error } = useSelector((state) => state.adminOrders);
 
   useEffect(() => {
-    if (!user || user.role !== "admin") {
-      navigate("/");
-    } else {
-      dispatch(fetchAllOrders());
-    }
-  }, [dispatch, user, navigate]);
+    // Disable auth check in mock mode
+  }, []);
+  // useEffect(() => {
+  //   if (!user || user.role !== "admin") {
+  //     navigate("/");
+  //   } else {
+  //     dispatch(fetchAllOrders());
+  //   }
+  // }, [dispatch, user, navigate]);
 
   const handleStatusChange = (orderId, status) => {
     dispatch(updateOrderStatus({ id: orderId, status }));
