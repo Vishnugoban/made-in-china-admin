@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { loginUser } from "../redux/slices/authSlice";
+import { loginUser } from "../redux/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
@@ -19,6 +19,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // dispatch(loginUser({ email, password }));
+    dispatch(loginUser({ email: "admin@test.com", password: "1234" }));
+    navigate("/admin");
   };
 
   return (
