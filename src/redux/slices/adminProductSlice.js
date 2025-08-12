@@ -5,18 +5,28 @@ const API_URL = `${import.meta.env.VITE_BACKEND_URL}`;
 const USER_TOKEN = `Bearer ${localStorage.getItem("userToken")}`;
 
 // async thunk to fetch admin products
+// export const fetchAdminProducts = createAsyncThunk(
+//   "adminProducts/fetchProducts",
+//   async () => {
+//     const response = await axios.get(`${API_URL}/api/admin/products`, {
+//       headers: {
+//         Authorization: USER_TOKEN,
+//       },
+//     });
+//     return response.data;
+//   }
+// );
+
 export const fetchAdminProducts = createAsyncThunk(
-  "adminProducts/fetchProducts",
+  "adminProducts/fetch",
   async () => {
-    const response = await axios.get(`${API_URL}/api/admin/products`, {
-      headers: {
-        Authorization: USER_TOKEN,
-      },
-    });
-    return response.data;
+    // Simulated API data
+    return [
+      { id: 1, name: "Sample Product A", price: 100 },
+      { id: 2, name: "Sample Product B", price: 150 },
+    ];
   }
 );
-
 // async function to create a new product
 export const createProduct = createAsyncThunk(
   "adminProducts/createProduct",

@@ -147,10 +147,20 @@ const EditProductPage = () => {
         </div>
 
         {/* SKU */}
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <label className="block font-semibold mb-2">SKU</label>
           <input
             type="text"
+            name="sku"
+            value={productData.sku}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded-md p-2"
+          />
+        </div> */}
+         <div className="mb-6">
+          <label className="block font-semibold mb-2">Whatsapp No :-</label>
+          <input
+            type="tel"
             name="sku"
             value={productData.sku}
             onChange={handleChange}
