@@ -69,6 +69,7 @@ const UserManagement = () => {
       <h2 className="text-2xl font-bold mb-6">User Management</h2>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
+
       {/* Add New User Form */}
       <div className="p-6 rounded-lg mb-6">
         <h3 className="text-lg font-bold mb-4">Add New User</h3>
@@ -116,6 +117,7 @@ const UserManagement = () => {
             >
               <option value="customer">Customer</option>
               <option value="admin">Admin</option>
+              <option value="vendor">Vendor</option> {/* Added Vendor */}
             </select>
           </div>
           <button
@@ -148,11 +150,14 @@ const UserManagement = () => {
                 <td className="p-4">
                   <select
                     value={user.role}
-                    onChange={(e) => handleRoleChange(user._id, e.target.value)}
+                    onChange={(e) =>
+                      handleRoleChange(user._id, e.target.value)
+                    }
                     className="p-2 border rounded"
                   >
                     <option value="customer">Customer</option>
                     <option value="admin">Admin</option>
+                    <option value="vendor">Vendor</option> {/* Added Vendor */}
                   </select>
                 </td>
                 <td className="p-4">
@@ -171,4 +176,5 @@ const UserManagement = () => {
     </div>
   );
 };
+
 export default UserManagement;
