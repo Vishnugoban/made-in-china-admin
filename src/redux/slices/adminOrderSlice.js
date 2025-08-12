@@ -2,22 +2,43 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Fetch all orders (admin only)
+// export const fetchAllOrders = createAsyncThunk(
+//   "adminOrders/fetchAllOrders",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.get(
+//         `${import.meta.env.VITE_BACKEND_URL}/api/admin/orders`,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+//           },
+//         }
+//       );
+//       return response.data;
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
+
 export const fetchAllOrders = createAsyncThunk(
-  "adminOrders/fetchAllOrders",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/admin/orders`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-          },
-        }
-      );
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
+  "adminOrders/fetchAll",
+  async () => {
+    // Mock data
+    return [
+      {
+        _id: "order1",
+        user: { name: "Alice" },
+        totalPrice: 120.5,
+        status: "Processing",
+      },
+      {
+        _id: "order2",
+        user: { name: "Bob" },
+        totalPrice: 89.99,
+        status: "Shipped",
+      },
+    ];
   }
 );
 
