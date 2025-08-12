@@ -62,7 +62,7 @@ const AdminSidebar = () => {
           <FaClipboardList />
           <span>Orders</span>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/"
           className={({ isActive }) =>
             isActive
@@ -72,7 +72,7 @@ const AdminSidebar = () => {
         >
           <FaStore />
           <span>Shop</span>
-        </NavLink>
+        </NavLink> */}
       </nav>
       <div className="mt-6">
         <button

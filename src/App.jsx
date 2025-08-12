@@ -54,7 +54,7 @@
 // src/App.jsx
 // Bypass login completely and go directly to admin
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import AdminLayout from "./components/Admin/AdminLayout";
 import { Toaster } from "sonner";
 import AdminHomePage from "./pages/AdminHomePage";
@@ -72,21 +72,23 @@ import store from "./redux/store";
 const App = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/made-in-china-admin">
         <Toaster position="top-right" />
 
         <Routes>
-          {/* Public Route: Login - no sidebar */}
+          {/* Redirect root "/" to "/login" */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
+
+          {/* Public Route: Login */}
           <Route path="/login" element={<Login />} />
 
           {/* Admin routes wrapped in AdminLayout */}
-          <Route path="/" element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminHomePage />} />
-            <Route path="admin" element={<AdminHomePage />} />
-            <Route path="admin/users" element={<UserManagement />} />
-            <Route path="admin/products" element={<ProductManagement />} />
-            <Route path="admin/products/:id/edit" element={<EditProductPage />} />
-            <Route path="admin/orders" element={<OrderManagement />} />
+            <Route path="users" element={<UserManagement />} />
+            <Route path="products" element={<ProductManagement />} />
+            <Route path="products/:id/edit" element={<EditProductPage />} />
+            <Route path="orders" element={<OrderManagement />} />
           </Route>
 
           {/* Catch-all for 404 */}
